@@ -23,7 +23,7 @@ html, body {
 }
 
 .screen {
-  height: 50vh;
+  height: 100vh;
   width: 100%;
   position: relative;
   overflow: hidden;
