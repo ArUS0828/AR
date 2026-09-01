@@ -19,7 +19,6 @@ html, body {
   background: var(--bg);
   color: var(--ink);
   font-family: "Outfit",sans-serif;
-  overflow: hidden;
 }
 
 .screen {
