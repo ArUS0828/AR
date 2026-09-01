@@ -362,6 +362,7 @@ box-shadow: 0 0 0 3px rgb(255 140 73 / 28%);
   min-height: 200px;
   border-top: 1px solid var(--line);
   background: var(--panel);
+  overflow-y: auto;
 }
 
 .composer-input {
