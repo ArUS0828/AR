@@ -357,7 +357,7 @@ box-shadow: 0 0 0 3px rgb(255 140 73 / 28%);
 }
 
 .composer {
-  min-height: 70px;
+  min-height: 170px;
   border-top: 1px solid var(--line);
   background: var(--panel);
   overflow-y: auto;
