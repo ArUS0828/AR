@@ -255,10 +255,31 @@ function updateLastSeen(otherUser, otherLastSeen) {
   }
 
   const time = new Date(otherLastSeen);
-  const formatted = isNaN(time)
-    ? ''
-    : time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  label.textContent = `${otherUser} last seen at ${formatted}`;
+  if (isNaN(time)) {
+    label.textContent = '';
+    return;
+  }
+
+  label.textContent = `${otherUser} last seen ${formatRelativeDay(time)}`;
+}
+
+function formatRelativeDay(date) {
+  const now = new Date();
+  const clock = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+  const startOfDay = (d) => new Date(d.getFullYear(), d.getMonth(), d.getDate());
+  const dayDiff = Math.round((startOfDay(now) - startOfDay(date)) / 86400000);
+
+  if (dayDiff === 0) return `today at ${clock}`;
+  if (dayDiff === 1) return `yesterday at ${clock}`;
+
+  if (dayDiff < 7) {
+    const weekday = date.toLocaleDateString([], { weekday: 'long' });
+    return `${weekday} at ${clock}`;
+  }
+
+  const dateLabel = date.toLocaleDateString([], { month: 'short', day: 'numeric' });
+  return `${dateLabel} at ${clock}`;
 }
 
 /* ---------- Change password ---------- */
